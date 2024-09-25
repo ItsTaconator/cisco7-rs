@@ -67,13 +67,13 @@ pub fn encrypt(plaintext: &str, salt: Option<usize>) -> Option<String> {
 mod tests {
     #[test]
     fn encrypt() {
-        let plaintext = "1234";
-        assert!(&super::encrypt(plaintext, Some(49)).unwrap() == "08701E1D5D")
+        const PLAINTEXT: &str = "1234";
+        assert!(&super::encrypt(PLAINTEXT, Some(49)).unwrap() == "08701E1D5D")
     }
 
     #[test]
     fn decrypt() {
-        let encrypted = "08701E1D5D";
-        assert!(&super::decrypt(encrypted).unwrap() == "1234")
+        const ENCRYPTED: &str = "08701E1D5D";
+        assert!(&super::decrypt(ENCRYPTED).unwrap() == "1234")
     }
 }
