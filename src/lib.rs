@@ -76,7 +76,7 @@ mod tests {
     #[test]
     fn encrypt() {
         const PLAINTEXT: &str = "1234";
-        assert!(&super::encrypt(PLAINTEXT, Some(49)).unwrap() == "08701E1D5D")
+        assert!(&super::encrypt(PLAINTEXT, None).unwrap() == "08701E1D5D")
     }
 
     #[test]
