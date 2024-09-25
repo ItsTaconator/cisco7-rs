@@ -1,5 +1,5 @@
 # cisco7-rs
-Cisco type 7 password de/encryptor written in Rust
+Decryptor and encryptor for Cisco type 7 passwords written in Rust
 
 Optionally compiles to WebAssembly
 
