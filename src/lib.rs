@@ -47,7 +47,7 @@ pub fn decrypt(password: &str) -> Option<String> {
 }
 
 /// Encrypts plaintext into a Cisco type 7 password
-/// 
+///
 /// Returns `None` if desired salt is invalid
 #[cfg_attr(feature = "wasm", wasm_bindgen)]
 pub fn encrypt(plaintext: &str, salt: Option<usize>) -> Option<String> {
@@ -59,15 +59,15 @@ pub fn encrypt(plaintext: &str, salt: Option<usize>) -> Option<String> {
 
     let password = plaintext.trim();
     let mut encrypted = String::new();
-    encrypted.push_str(&format!("{:0>2}", salt));
+    encrypted.push_str(&format!("{salt:0>2}"));
 
-    let bytes = password.as_bytes();    
+    let bytes = password.as_bytes();
 
-    for i in 0..password.len() {
-        encrypted.push_str(&format!("{:0>2X}", bytes[i] ^ XLAT[salt]));
+    for byte in bytes.iter() {
+        encrypted.push_str(&format!("{:0>2X}", byte ^ XLAT[salt]));
         salt += 1;
     }
-    
+
     Some(encrypted)
 }
 
