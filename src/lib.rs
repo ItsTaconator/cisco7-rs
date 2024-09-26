@@ -52,8 +52,11 @@ pub fn decrypt(password: &str) -> Option<String> {
 #[cfg_attr(feature = "wasm", wasm_bindgen)]
 pub fn encrypt(plaintext: &str, salt: Option<usize>) -> Option<String> {
     let mut salt = salt.unwrap_or(8);
-    if salt + plaintext.len() > 52 {
+    if salt > 52 {
         println!("Salt too high");
+        return None;
+    } else if salt + plaintext.len() > 52 {
+        println!("String too long");
         return None;
     }
 
