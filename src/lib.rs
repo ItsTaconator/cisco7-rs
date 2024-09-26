@@ -15,14 +15,14 @@ fn hex(str: &str) -> Result<u8, std::num::ParseIntError> {
 }
 
 /// Decrypts a Cisco type 7 password
-/// 
+///
 /// Returns `None` if salt is invalid
 #[cfg_attr(feature = "wasm", wasm_bindgen)]
 pub fn decrypt(password: &str) -> Option<String> {
     let mut decrypted = String::new();
     let salt = password[..2].parse::<usize>();
     if salt.is_err() {
-        println!("Salt is not a number");   
+        println!("Salt is not a number");
         return None;
     }
 
